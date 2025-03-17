@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { 
   Home, Users, MessageSquare, BookOpen, 
   BarChart2, Search, Award, Settings, User,
-  Video, LogIn, UserPlus
+  Video, LogIn, UserPlus, LucideIcon
 } from "lucide-react";
 import SidebarNavItem from "./SidebarNavItem";
 import SidebarUserProfile from "./SidebarUserProfile";
@@ -13,7 +13,7 @@ import SidebarLogo from "./SidebarLogo";
 type NavItem = {
   title: string;
   href: string;
-  icon: React.ElementType;
+  icon: LucideIcon;
   restricted?: boolean;
 };
 
