@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { 
   Home, Users, MessageSquare, BookOpen, 
-  BarChart2, Search, Award, Settings, ChevronLeft, ChevronRight
+  BarChart2, Search, Award, Settings, ChevronLeft, ChevronRight, User
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";

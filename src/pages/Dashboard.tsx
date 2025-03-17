@@ -1,5 +1,5 @@
 
-import { Calendar, Clock, Target, Trending, Users, Book, MessageSquare } from "lucide-react";
+import { Calendar, Clock, Target, TrendingUp, Users, Book, MessageSquare } from "lucide-react";
 import Sidebar from "@/components/layout/Sidebar";
 import StatsCard from "@/components/StatsCard";
 import MentorCard from "@/components/MentorCard";
