@@ -3,7 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { 
   Home, Users, MessageSquare, BookOpen, 
-  BarChart2, Search, Award, Settings, ChevronLeft, ChevronRight, User
+  BarChart2, Search, Award, Settings, ChevronLeft, ChevronRight, User,
+  Video, LogIn, UserPlus
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -12,6 +13,7 @@ type NavItem = {
   title: string;
   href: string;
   icon: React.ElementType;
+  restricted?: boolean;
 };
 
 const navItems: NavItem[] = [
@@ -41,6 +43,11 @@ const navItems: NavItem[] = [
     icon: BarChart2,
   },
   {
+    title: "Mentor Videos",
+    href: "/mentor-videos",
+    icon: Video,
+  },
+  {
     title: "Search & Filter",
     href: "/search",
     icon: Search,
@@ -55,11 +62,28 @@ const navItems: NavItem[] = [
     href: "/settings",
     icon: Settings,
   },
+  {
+    title: "Login",
+    href: "/login",
+    icon: LogIn,
+    restricted: true,
+  },
+  {
+    title: "Sign Up",
+    href: "/signup",
+    icon: UserPlus,
+    restricted: true,
+  },
 ];
 
 const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Simulate authentication state
   const location = useLocation();
+
+  const visibleNavItems = navItems.filter(item => 
+    !item.restricted || (item.restricted && !isLoggedIn)
+  );
 
   return (
     <aside 
@@ -84,8 +108,8 @@ const Sidebar = () => {
         </Button>
       </div>
 
-      <div className="flex-1 py-8 px-3 space-y-1">
-        {navItems.map((item) => (
+      <div className="flex-1 py-8 px-3 space-y-1 overflow-y-auto">
+        {visibleNavItems.map((item) => (
           <Link
             key={item.href}
             to={item.href}
@@ -103,22 +127,24 @@ const Sidebar = () => {
         ))}
       </div>
 
-      <div className="p-4 border-t border-gray-200">
-        <div className={cn(
-          "flex items-center",
-          collapsed ? "justify-center" : "space-x-3"
-        )}>
-          <div className="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center">
-            <User size={16} />
-          </div>
-          {!collapsed && (
-            <div>
-              <p className="text-sm font-medium">User Name</p>
-              <p className="text-xs text-gray-500">Mentee</p>
+      {isLoggedIn && (
+        <div className="p-4 border-t border-gray-200">
+          <div className={cn(
+            "flex items-center",
+            collapsed ? "justify-center" : "space-x-3"
+          )}>
+            <div className="w-8 h-8 rounded-full bg-gray-300 flex items-center justify-center">
+              <User size={16} />
             </div>
-          )}
+            {!collapsed && (
+              <div>
+                <p className="text-sm font-medium">User Name</p>
+                <p className="text-xs text-gray-500">Mentee</p>
+              </div>
+            )}
+          </div>
         </div>
-      </div>
+      )}
     </aside>
   );
 };
