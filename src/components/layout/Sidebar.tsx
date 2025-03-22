@@ -44,11 +44,11 @@ const navItems: NavItem[] = [
     href: "/endorsements",
     icon: Award,
   },
-  {
-    title: "Settings",
-    href: "/settings",
-    icon: Settings,
-  },
+  // {
+  //   title: "Settings",
+  //   href: "/settings",
+  //   icon: Settings,
+  // },
   {
     title: "Home",
     href: "/",
