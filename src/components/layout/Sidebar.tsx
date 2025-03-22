@@ -40,8 +40,8 @@ const navItems: NavItem[] = [
   },
  
   {
-    title: "Endorsements",
-    href: "/endorsements",
+    title: "Accomplishments",
+    href: "/Accomplishments",
     icon: Award,
   },
   // {

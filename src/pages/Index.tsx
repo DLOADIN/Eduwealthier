@@ -1,182 +1,340 @@
-
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/layout/Navbar";
 import FeatureCard from "@/components/FeatureCard";
 import { Users, MessageSquare, Award, Search, BarChart2 } from "lucide-react";
+import { useState } from "react";
+// import { motion } from "framer-motion";
+import { motion } from "framer-motion";
+
+import image1 from '../frontend/assets/images/img1.jpg'
+import image2 from '../frontend/assets/images/img2.png'
+import image3 from '../frontend/assets/images/img3.jpg'
+import image4 from '../frontend/assets/images/img4.jpg'
+import image5 from '../frontend/assets/images/img5.jpg'
+import image6 from '../frontend/assets/images/img6.png'
+import image7 from '../frontend/assets/images/img7.png'
+import image8 from '../frontend/assets/images/img8.jpeg'
+
 
 const Index = () => {
+  const [hoverIndex, setHoverIndex] = useState(null);
+  const FeatureCard = [
+    { name: "Oprah Winfrey", image: image3, description: "Learn about Oprah's contributions to modern-day feminism and her insights on personal growth." },
+    { name: "Elon Musk", image: image4, description: "Discover how Elon Musk runs his companies and what we can learn from his leadership." },
+    { name: "Neil deGrasse Tyson", image: image5, description: "Master astrophysics and cosmology with the world's leading astrophysicist." },
+    { name: "Nischa", image: image6, description: "Learn investment banking and financial literacy from a top portfolio manager." },
+    { name: "Paul Kagame", image: image7, description: "Explore leadership lessons from Rwanda's President, Paul Kagame." },
+    { name: "Denis Villeneuve", image: image8, description: "Learn filmmaking from one of the world's leading directors." },
+  ];
+  
+  const faqs = [
+    {
+      question: "How do I cancel my subscription?",
+      answer: "You can cancel your subscription from your account settings. If you need further assistance, contact our support team."
+    },
+    {
+      question: "Are the tutorials suitable for beginners?",
+      answer: "Yes! Our tutorials are designed for all skill levels, from beginners to advanced users."
+    },
+    {
+      question: "Can I access tutorials on multiple devices?",
+      answer: "Absolutely! You can access your tutorials on any device with an internet connection."
+    },
+    {
+      question: "Is there a difference between monthly and yearly subscriptions?",
+      answer: "The only difference is the billing cycle. Yearly subscriptions come with a discount compared to monthly payments."
+    },
+    {
+      question: "What happens if my payment fails during the subscription period?",
+      answer: "If a payment fails, you'll receive a notification and have a grace period to update your payment method."
+    },
+    {
+      question: "Can I get a refund if I'm not satisfied with the tutorials?",
+      answer: "We offer a 7-day money-back guarantee if you're not satisfied with our content. Contact support for details."
+    }
+  ];
+
+  const pricingPlans = [
+    {
+      plan: "Personal",
+      price: "$0",
+      features: ["Limited tutorials", "No membership", "Dashboard Analytics"],
+    },
+    {
+      plan: "Professional",
+      price: "$10",
+      features: ["All tutorials", "Membership", "Community access", "Dashboard Analytics"],
+    },
+    {
+      plan: "Elite",
+      price: "$50",
+      features: ["Everything in Pro", "Simple Panel"],
+    },
+  ];
+  
+
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
+
+      {/* Header */}
+      <header className="border border-purple-200 rounded-lg mx-2 my-2">
+        <nav className="container mx-auto flex items-center justify-between p-4">
+          <div className="flex space-x-8">
+            <a href="#" className="text-gray-800 font-medium">About Us</a>
+            <a href="#" className="text-gray-800 font-medium">Why Us</a>
+            <a href="#" className="text-gray-800 font-medium">Tutorials</a>
+            <a href="#" className="text-gray-800 font-medium">Pricing</a>
+            <a href="#" className="text-gray-800 font-medium">FAQs</a>
+          </div>
+          <div className="flex space-x-4">
+            <Button variant="outline">Login</Button>
+            <Button>Sign Up</Button>
+          </div>
+        </nav>
+      </header>
+
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-eduwealth-background to-white py-20">
-        <div className="container px-4 mx-auto">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            <div className="lg:w-1/2 animate-fade-in">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                Empowering individuals to learn and earn through mentorship
-              </h1>
-              <p className="text-lg text-gray-600 mb-8">
-                Connect with expert mentors, develop new skills, and collaborate on projects
-                in a structured learning environment designed to help you succeed.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/mentors">
-                  <Button size="lg" className="bg-eduwealth-primary hover:bg-eduwealth-primary/90">
-                    Find a Mentor
-                  </Button>
-                </Link>
-                <Link to="/signup">
-                  <Button size="lg" variant="outline">
-                    Become a Mentor
-                  </Button>
-                </Link>
+      <section className="container mx-auto py-12 px-4">
+        <div className="flex flex-col md:flex-row items-center justify-between">
+          <div className="md:w-1/2 mb-8 md:mb-0">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Master Your Expertise with the World's Best Mentors
+            </h1>
+            <p className="text-gray-600 mb-8">
+              Join for exclusive access to premium financial tutorials, world-class mentorship, and hands-on projects designed to elevate your financial literacy and other skills.
+            </p>
+            <div className="flex space-x-4">
+              <Button className="bg-gray-800 text-white">Become a Member</Button>
+              <Button className="bg-orange-500 text-white">Continue Your Studies</Button>
+            </div>
+            <div className="flex mt-16 space-x-4">
+              <div className="text-center p-6">
+                <h2 className="text-4xl font-bold text-blue-500">100+</h2>
+                <p className="text-gray-600">Mentors</p>
+              </div>
+              <div className="text-center p-6">
+                <h2 className="text-4xl font-bold text-orange-500">200+</h2>
+                <p className="text-gray-600">Courses</p>
+              </div>
+              <div className="text-center p-6">
+                <h2 className="text-4xl font-bold text-green-600">99%</h2>
+                <p className="text-gray-600">Satisfaction</p>
               </div>
             </div>
-            <div className="lg:w-1/2">
-              <img 
-                src="public/lovable-uploads/acf32a02-4a25-495a-89e0-7519dd9308b4.png" 
-                alt="EduWealth Mentorship" 
-                className="w-full rounded-lg shadow-lg"
-              />
+          </div>
+          <div className="md:w-1/2 relative">
+            <div className="bg-red-200 rounded-full w-64 h-64 md:w-80 md:h-80 absolute top-0 right-0 -z-10"></div>
+            <img
+              src={image2}
+              alt="Student with notebook"
+              className="relative z-10"
+            />
+            <div className="absolute top-16 left-0 bg-blue-500 text-white p-4 rounded-lg shadow-lg transform -translate-x-1/4 rotate-12 z-20">
+              <MessageSquare className="h-8 w-8" />
+            </div>
+            <div className="absolute top-8 right-8 bg-green-600 text-white p-4 rounded-lg shadow-lg transform rotate-12 z-20">
+              <Award className="h-8 w-8" />
+            </div>
+            <div className="absolute bottom-16 left-0 bg-white px-4 py-2 rounded-full shadow-lg flex items-center z-20">
+              <div className="flex -space-x-2 mr-2">
+                <div className="w-8 h-8 rounded-full bg-purple-500 border-2 border-white"></div>
+                <div className="w-8 h-8 rounded-full bg-green-500 border-2 border-white"></div>
+                <div className="w-8 h-8 rounded-full bg-orange-500 border-2 border-white"></div>
+              </div>
+              <span className="text-sm font-medium">3800+ people already joined</span>
             </div>
           </div>
         </div>
       </section>
-      
-      {/* Features Section */}
-      <section className="py-20 bg-white">
-        <div className="container px-4 mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">Planned Technical Features</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Our platform is built with cutting-edge technology to provide the best mentorship experience.
+
+      {/* Mission Section */}
+      <section className="container mx-auto py-16 px-4 bg-white">
+        <div className="flex flex-col md:flex-row items-center">
+          <div className="md:w-1/2 pr-8">
+            <div className="border-l-4 border-blue-400 pl-6 mb-8">
+              <h2 className="text-4xl font-bold text-gray-800 mb-4">
+                WE EDUCATE<br />
+                FOR A BETTER<br />
+                GENERATION
+              </h2>
+            </div>
+            <p className="text-gray-600 leading-relaxed">
+              With years of research-backed insights, we are dedicated to helping you reach financial success by offering personalized learning experiences tailored to your needs and connecting you with the best experts in the world as your mentors.
             </p>
           </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <FeatureCard 
-              title="Mentorship Matching System" 
-              description="Rule-based algorithm to connect mentees with the perfect mentor based on skills, goals, and preferences."
-              icon={Users}
-            />
-            
-            <FeatureCard 
-              title="Collaboration Service" 
-              description="Real-time communication and progress tracking tools to facilitate effective mentorship relationships."
-              icon={MessageSquare}
-            />
-            
-            <FeatureCard 
-              title="Mentor Endorsement System" 
-              description="Verify mentor expertise through a comprehensive review and endorsement system."
-              icon={Award}
-            />
-            
-            <FeatureCard 
-              title="Search & Filtering System" 
-              description="Advanced search capabilities to find mentors and content tailored to your specific needs."
-              icon={Search}
-            />
-            
-            <FeatureCard 
-              title="Analytics & Reporting" 
-              description="Track mentorship effectiveness and progress with detailed analytics and insights."
-              icon={BarChart2}
+          <div className="md:w-1/2 mt-10 md:mt-0">
+            <img
+              src={image1}
+              alt="Students collaborating with laptops"
+              className="w-full rounded-lg shadow-lg"
             />
           </div>
         </div>
       </section>
-      
-      {/* Problem Statement Section */}
-      <section className="py-20 bg-eduwealth-background">
-        <div className="container px-4 mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold mb-6">Problem Statement</h2>
-              <p className="text-xl mb-8">
-                Millions of people struggle to access quality education and job opportunities
-                due to skill gaps and lack of mentorship.
-              </p>
-              
-              <h3 className="text-2xl font-bold mb-4">Significance</h3>
-              <p className="text-lg">
-                Edu<span className="text-eduwealth-primary">Wealth</span> directly tackles this by
-                providing a structured platform for mentorship, learning, and collaboration.
-              </p>
-            </div>
-            
-            <div>
-              <img 
-                src="public/lovable-uploads/05e206ab-469c-46ce-aa30-924faa28d444.png" 
-                alt="Problem Statement" 
-                className="w-full rounded-lg shadow-lg"
-              />
-            </div>
-          </div>
+
+      {/* Features Section */}
+      <section className="container mx-auto py-16 px-4">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+          WHY CHOOSE TO LEARN FROM US?
+        </h2>
+        <p className="text-gray-600 text-center max-w-4xl mx-auto mb-16 leading-relaxed">
+          We provide videos and tutorials from top-notch industry experts who have dedicated their lives to their professions and are ready to offer their expertise to individuals looking to upgrade their skills to meet current market demands.
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {
+            FeatureCard.map((feature, index) => (
+              <div key={index}>
+                <h2>{feature.name}</h2>
+                {typeof feature.image === 'string' && (
+                <img className="w-50 h-60 rounded-md" src={feature.image} alt={feature.name} />
+                  )}
+                <p>{feature.description}</p>
+              </div>
+            ))
+          }
         </div>
       </section>
-      
-      {/* CTA Section */}
-      <section className="py-16 bg-eduwealth-primary text-white">
-        <div className="container px-4 mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6">Ready to Start Your Learning Journey?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Join thousands of mentees and mentors who are already building skills
-            and careers through our platform.
-          </p>
-          <Link to="/signup">
-            <Button size="lg" className="bg-white text-eduwealth-primary hover:bg-gray-100">
-              Get Started Today
+
+      {/* Pricing Section */}
+    <section className="max-w-6xl mx-auto px-4 py-16 bg-gray-50 text-gray-900">
+      <h2 className="text-3xl font-bold text-center mb-10">Choose Your Plan</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {pricingPlans.map((plan, index) => (
+          <motion.div
+            key={index}
+            whileHover={{ scale: 1.05, boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.1)" }}
+            transition={{ duration: 0.3 }}
+            className="bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center text-center"
+          >
+            <h3 className="text-lg font-semibold text-gray-700">{plan.plan}</h3>
+            <div className="flex items-baseline my-4">
+              <span className="text-4xl font-bold">{plan.price}</span>
+              <span className="text-gray-500 text-sm ml-1">/month</span>
+            </div>
+            <ul className="space-y-3 mb-6 text-gray-600">
+              {plan.features.map((feature, i) => (
+                <li key={i} className="flex items-center">
+                  <span className="h-6 w-6 bg-gray-900 text-white flex items-center justify-center rounded-full mr-3">
+                    ✔
+                  </span>
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+            <Button className="bg-gray-900 text-white py-2 px-6 rounded-full hover:bg-gray-700 transition-all">
+              Get Started
             </Button>
-          </Link>
-        </div>
-      </section>
-      
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="container px-4 mx-auto">
-          <div className="grid md:grid-cols-4 gap-8">
+          </motion.div>
+        ))}
+      </div>
+    </section>
+  );
+
+      {/* FAQ Section */}
+      <section className="max-w-3xl mx-auto px-4 py-12 md:py-16">
+      <h2 className="text-xl md:text-2xl font-medium text-center mb-8">
+        Frequently Asked Questions
+      </h2>
+      <div className="space-y-4">
+        {faqs.map((faq, index) => (
+          <div key={index} className="border-b border-gray-200 pb-4">
+            <div className="flex justify-between items-center w-full">
+              <span className="text-sm md:text-base font-medium">{faq.question}</span>
+              <div className="relative group">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 text-gray-400 cursor-pointer"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M12 4v16m8-8H4"
+                  />
+                </svg>
+                <div
+                  className="absolute left-0 mt-2 w-64 bg-white shadow-lg p-3 rounded-md text-sm text-gray-700 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-800"
+                >
+                  {faq.answer}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+      {/* Newsletter Section */}
+      <section className="bg-gray-50 py-12 md:py-16">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-12">
             <div>
-              <h3 className="text-xl font-bold mb-4">EduWealth</h3>
-              <p className="text-gray-400">
-                Empowering individuals to learn new skills and earn through mentorship.
+              <h2 className="text-xl md:text-2xl font-medium mb-2">
+                Stay Informed, Stay Inspired
+              </h2>
+              <p className="text-sm text-gray-600">
+                Subscribe to our newsletter for the latest insights and updates.
               </p>
             </div>
-            
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Platform</h4>
+            <div className="mt-4 md:mt-0 w-full md:w-auto flex">
+              <input
+                type="email"
+                placeholder="hello@example.com"
+                className="flex-grow md:w-64 px-4 py-2 text-sm border border-gray-300 rounded-l focus:outline-none focus:ring-1 focus:ring-gray-400"
+              />
+              <Button className="bg-red-500 text-white px-4 py-2 text-sm font-medium rounded-r">
+                Subscribe
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-white py-12">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="flex flex-col md:flex-row justify-between">
+            <div className="mb-8 md:mb-0">
+              <div className="text-lg font-bold mb-4">Eduwealth</div>
+              <div className="flex space-x-4">
+                <a href="#" className="text-gray-600 hover:text-gray-900">
+                  <Users className="h-5 w-5" />
+                </a>
+                <a href="#" className="text-gray-600 hover:text-gray-900">
+                  <MessageSquare className="h-5 w-5" />
+                </a>
+                <a href="#" className="text-gray-600 hover:text-gray-900">
+                  <Award className="h-5 w-5" />
+                </a>
+              </div>
+            </div>
+            <div className="mb-8 md:mb-0">
+              <p className="text-lg mb-4 font-extrabold">MENU</p>
               <ul className="space-y-2">
-                <li><Link to="/mentors" className="text-gray-400 hover:text-white">Find Mentors</Link></li>
-                <li><Link to="/learning-paths" className="text-gray-400 hover:text-white">Learning Paths</Link></li>
-                <li><Link to="/analytics" className="text-gray-400 hover:text-white">Analytics</Link></li>
-                <li><Link to="/endorsements" className="text-gray-400 hover:text-white">Endorsements</Link></li>
+                <li><a href="#" className="text-sm text-gray-600 hover:text-gray-900">About Us</a></li>
+                <li><a href="#" className="text-sm text-gray-600 hover:text-gray-900">Why Us</a></li>
+                <li><a href="#" className="text-sm text-gray-600 hover:text-gray-900">Tutorials</a></li>
+                <li><a href="#" className="text-sm text-gray-600 hover:text-gray-900">Pricing</a></li>
               </ul>
             </div>
-            
             <div>
-              <h4 className="text-lg font-semibold mb-4">Company</h4>
+            <p className="text-lg mb-4 font-extrabold">ACCOUNT</p>
               <ul className="space-y-2">
-                <li><Link to="/about" className="text-gray-400 hover:text-white">About Us</Link></li>
-                <li><Link to="/careers" className="text-gray-400 hover:text-white">Careers</Link></li>
-                <li><Link to="/blog" className="text-gray-400 hover:text-white">Blog</Link></li>
-                <li><Link to="/contact" className="text-gray-400 hover:text-white">Contact</Link></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Legal</h4>
-              <ul className="space-y-2">
-                <li><Link to="/terms" className="text-gray-400 hover:text-white">Terms of Service</Link></li>
-                <li><Link to="/privacy" className="text-gray-400 hover:text-white">Privacy Policy</Link></li>
-                <li><Link to="/cookies" className="text-gray-400 hover:text-white">Cookie Policy</Link></li>
+                <li><a href="#" className="text-sm text-gray-600 hover:text-gray-900">Sign Up</a></li>
+                <li><a href="#" className="text-sm text-gray-600 hover:text-gray-900">Login</a></li>
               </ul>
             </div>
           </div>
-          
-          <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
-            <p>&copy; {new Date().getFullYear()} EduWealth. All rights reserved.</p>
+          <div className="border-t border-gray-200 mt-12 pt-6">
+            <p className="text-xs text-gray-500 text-center">
+              © 2025 Eduwealth. All rights reserved.
+            </p>
           </div>
         </div>
       </footer>
