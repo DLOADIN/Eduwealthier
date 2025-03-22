@@ -3,7 +3,7 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { 
   Home, Users, House, 
-  BarChart2, Search, Award, Settings,
+  BarChart2, Search, Trophy, Settings,
   Video, LucideIcon
 } from "lucide-react";
 import SidebarNavItem from "./SidebarNavItem";
@@ -42,7 +42,7 @@ const navItems: NavItem[] = [
   {
     title: "Accomplishments",
     href: "/Accomplishments",
-    icon: Award,
+    icon: Trophy,
   },
   // {
   //   title: "Settings",

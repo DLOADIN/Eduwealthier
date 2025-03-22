@@ -4,7 +4,6 @@ import Navbar from "@/components/layout/Navbar";
 import FeatureCard from "@/components/FeatureCard";
 import { Users, MessageSquare, Award, Search, BarChart2 } from "lucide-react";
 import { useState } from "react";
-// import { motion } from "framer-motion";
 import { motion } from "framer-motion";
 
 import image1 from '../frontend/assets/images/img1.jpg'
@@ -77,21 +76,27 @@ const Index = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar />
 
       {/* Header */}
       <header className="border border-purple-200 rounded-lg mx-2 my-2">
         <nav className="container mx-auto flex items-center justify-between p-4">
+        <Link to="#" className="flex items-center space-x-2">
+          <span className="text-eduwealth-primary text-2xl font-bold">Edu<span className="text-eduwealth-accent">Wealth</span></span>
+        </Link>
           <div className="flex space-x-8">
-            <a href="#" className="text-gray-800 font-medium">About Us</a>
-            <a href="#" className="text-gray-800 font-medium">Why Us</a>
-            <a href="#" className="text-gray-800 font-medium">Tutorials</a>
-            <a href="#" className="text-gray-800 font-medium">Pricing</a>
-            <a href="#" className="text-gray-800 font-medium">FAQs</a>
+              <a href="#About-Us" className="text-gray-800 font-medium">About Us</a>
+              <a href="#why-us" className="text-gray-800 font-medium">Why Us</a>
+              {/* <a href="#mentors" className="text-gray-800 font-medium">Mentors</a> */}
+              <a href="#pricing" className="text-gray-800 font-medium">Pricing</a>
+              <a href="#faqs" className="text-gray-800 font-medium">FAQs</a>
           </div>
           <div className="flex space-x-4">
-            <Button variant="outline">Login</Button>
-            <Button>Sign Up</Button>
+          <Link to="/login">
+            <Button className="bg-orange-400 hover:bg-eduwealth-primary">Sign In</Button>
+          </Link>
+          <Link to="/signup">
+            <Button  className="hover:bg-orange-400">Sign Up</Button>
+          </Link>
           </div>
         </nav>
       </header>
@@ -107,8 +112,14 @@ const Index = () => {
               Join for exclusive access to premium financial tutorials, world-class mentorship, and hands-on projects designed to elevate your financial literacy and other skills.
             </p>
             <div className="flex space-x-4">
-              <Button className="bg-gray-800 text-white">Become a Member</Button>
-              <Button className="bg-orange-500 text-white">Continue Your Studies</Button>
+              <Link to="/signup"> 
+                <Button className="bg-gray-800 text-white">Become a Member</Button>
+              </Link>
+              
+              <Link to="/login">
+                <Button className="bg-orange-500 text-white">Continue Your Studies</Button>
+              </Link>
+
             </div>
             <div className="flex mt-16 space-x-4">
               <div className="text-center p-6">
@@ -151,7 +162,7 @@ const Index = () => {
       </section>
 
       {/* Mission Section */}
-      <section className="container mx-auto py-16 px-4 bg-white">
+      <section className="container mx-auto py-16 px-4 bg-white" id="About-Us">
         <div className="flex flex-col md:flex-row items-center">
           <div className="md:w-1/2 pr-8">
             <div className="border-l-4 border-blue-400 pl-6 mb-8">
@@ -176,7 +187,7 @@ const Index = () => {
       </section>
 
       {/* Features Section */}
-      <section className="container mx-auto py-16 px-4">
+      <section className="container mx-auto py-16 px-4" id="why-us">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
           WHY CHOOSE TO LEARN FROM US?
         </h2>
@@ -199,7 +210,7 @@ const Index = () => {
       </section>
 
       {/* Pricing Section */}
-    <section className="max-w-6xl mx-auto px-4 py-16 bg-gray-50 text-gray-900">
+    <section className="max-w-6xl mx-auto px-4 py-16 bg-gray-50 text-gray-900" id="pricing">
       <h2 className="text-3xl font-bold text-center mb-10">Choose Your Plan</h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {pricingPlans.map((plan, index) => (
@@ -224,9 +235,11 @@ const Index = () => {
                 </li>
               ))}
             </ul>
-            <Button className="bg-gray-900 text-white py-2 px-6 rounded-full hover:bg-gray-700 transition-all">
-              Get Started
-            </Button>
+            <Link to="/login">
+              <Button className="bg-gray-900 text-white py-2 px-6 rounded-full hover:bg-gray-700 transition-all">
+                Get Started
+              </Button>
+            </Link>
           </motion.div>
         ))}
       </div>
@@ -234,7 +247,7 @@ const Index = () => {
   );
 
       {/* FAQ Section */}
-      <section className="max-w-3xl mx-auto px-4 py-12 md:py-16">
+      <section className="max-w-3xl mx-auto px-4 py-12 md:py-16" id="faqs">
       <h2 className="text-xl md:text-2xl font-medium text-center mb-8">
         Frequently Asked Questions
       </h2>
@@ -317,17 +330,18 @@ const Index = () => {
             <div className="mb-8 md:mb-0">
               <p className="text-lg mb-4 font-extrabold">MENU</p>
               <ul className="space-y-2">
-                <li><a href="#" className="text-sm text-gray-600 hover:text-gray-900">About Us</a></li>
-                <li><a href="#" className="text-sm text-gray-600 hover:text-gray-900">Why Us</a></li>
-                <li><a href="#" className="text-sm text-gray-600 hover:text-gray-900">Tutorials</a></li>
-                <li><a href="#" className="text-sm text-gray-600 hover:text-gray-900">Pricing</a></li>
+                <li> <a href="#About-Us" className="text-gray-800 font-medium">About Us</a></li>
+                <li><a href="#why-us" className="text-gray-800 font-medium">Why Us</a></li>
+                {/* <a href="#mentors" className="text-gray-800 font-medium">Mentors</a> */}
+                <li><a href="#pricing" className="text-gray-800 font-medium">Pricing</a></li>
+                <li><a href="#faqs" className="text-gray-800 font-medium">FAQs</a></li>
               </ul>
             </div>
             <div>
             <p className="text-lg mb-4 font-extrabold">ACCOUNT</p>
               <ul className="space-y-2">
-                <li><a href="#" className="text-sm text-gray-600 hover:text-gray-900">Sign Up</a></li>
-                <li><a href="#" className="text-sm text-gray-600 hover:text-gray-900">Login</a></li>
+                <li><Link to="/signup">Sign Up</Link></li>
+                <li><Link to="/login">Login</Link></li>
               </ul>
             </div>
           </div>
