@@ -2,9 +2,9 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { 
-  Home, Users, MessageSquare, BookOpen, 
-  BarChart2, Search, Award, Settings, User,
-  Video, LogIn, UserPlus, LucideIcon
+  Home, Users, House, 
+  BarChart2, Search, Award, Settings,
+  Video, LucideIcon
 } from "lucide-react";
 import SidebarNavItem from "./SidebarNavItem";
 import SidebarUserProfile from "./SidebarUserProfile";
@@ -29,16 +29,6 @@ const navItems: NavItem[] = [
     icon: Users,
   },
   {
-    title: "Messages",
-    href: "/messages",
-    icon: MessageSquare,
-  },
-  {
-    title: "Learning Paths",
-    href: "/learning-paths",
-    icon: BookOpen,
-  },
-  {
     title: "Analytics",
     href: "/analytics",
     icon: BarChart2,
@@ -48,11 +38,7 @@ const navItems: NavItem[] = [
     href: "/mentor-videos",
     icon: Video,
   },
-  {
-    title: "Search & Filter",
-    href: "/search",
-    icon: Search,
-  },
+ 
   {
     title: "Endorsements",
     href: "/endorsements",
@@ -64,17 +50,11 @@ const navItems: NavItem[] = [
     icon: Settings,
   },
   {
-    title: "Login",
-    href: "/login",
-    icon: LogIn,
-    restricted: true,
+    title: "Home",
+    href: "/",
+    icon: House,
   },
-  {
-    title: "Sign Up",
-    href: "/signup",
-    icon: UserPlus,
-    restricted: true,
-  },
+  
 ];
 
 const Sidebar = () => {

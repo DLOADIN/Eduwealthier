@@ -17,6 +17,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth, useClerk } from "@clerk/clerk-react";
+
+
 const mentors = [
   {
     id: "1",
@@ -80,6 +84,14 @@ const Mentors = () => {
   const [priceRange, setPriceRange] = useState([0, 100]);
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [showFilters, setShowFilters] = useState(false);
+  const { signOut } = useClerk();
+  const navigate = useNavigate();
+
+
+  const handleLogout = async () => {
+    await signOut(); 
+    navigate("/");   
+  };
 
   const toggleCategory = (category: string) => {
     if (selectedCategories.includes(category)) {
@@ -100,6 +112,11 @@ const Mentors = () => {
               <h1 className="text-2xl font-bold">Find Mentors</h1>
               <p className="text-muted-foreground">Connect with expert mentors to accelerate your learning</p>
             </div>
+            <div className="mt-4 md:mt-0 space-x-2">
+            <Button className="bg-eduwealth-primary hover:bg-eduwealth-primary/90" onClick={handleLogout}>
+              Logout
+          </Button>
+      </div>
           </div>
           
           {/* Search and Filter */}

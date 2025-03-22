@@ -8,6 +8,9 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import Sidebar from "@/components/layout/Sidebar";
+import { Link, useNavigate } from "react-router-dom";
+import { useClerk } from "@clerk/clerk-react";
+
 
 interface VideoCardProps {
   id: string;
@@ -35,7 +38,6 @@ const MentorVideoCard = ({
   tags,
 }: VideoCardProps) => {
   const defaultThumbnail = "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bGVhcm5pbmd8ZW58MHx8MHx8fDA%3D";
-  
   return (
     <Card className="overflow-hidden card-hover">
       <div className="relative">
@@ -166,6 +168,14 @@ const sampleVideos: VideoCardProps[] = [
 const MentorVideos = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredVideos, setFilteredVideos] = useState(sampleVideos);
+  const { signOut } = useClerk();
+  const navigate = useNavigate();
+
+  
+  const handleLogout = async () => {
+    await signOut();  
+    navigate("/");    
+  };
 
   return (
     <div className="flex h-screen overflow-hidden">
@@ -178,6 +188,9 @@ const MentorVideos = () => {
               <h1 className="text-2xl font-bold">Learning Library</h1>
               <p className="text-muted-foreground">Explore videos and tutorials from top mentors</p>
             </div>
+            <Button className="bg-eduwealth-primary hover:bg-eduwealth-primary/90" onClick={handleLogout}>
+              Logout
+          </Button>
           </div>
           
           {/* Search and filter */}

@@ -9,7 +9,6 @@ const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
-      
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-eduwealth-background to-white py-20">
         <div className="container px-4 mx-auto">

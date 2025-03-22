@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { BarChart, LineChart, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Bar, Line, ResponsiveContainer } from "recharts";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -7,27 +6,38 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Sidebar from "@/components/layout/Sidebar";
 import StatsCard from "@/components/StatsCard";
 import { BarChart2, TrendingUp, Clock, Target, Calendar } from "lucide-react";
-
-// Sample data for charts
-const learningProgressData = [
-  { month: "Jan", hours: 12, sessions: 5, skills: 2 },
-  { month: "Feb", hours: 15, sessions: 7, skills: 2 },
-  { month: "Mar", hours: 18, sessions: 8, skills: 3 },
-  { month: "Apr", hours: 16, sessions: 7, skills: 3 },
-  { month: "May", hours: 22, sessions: 10, skills: 4 },
-  { month: "Jun", hours: 28, sessions: 12, skills: 5 },
-];
-
-const skillProgressData = [
-  { name: "JavaScript", progress: 85 },
-  { name: "React", progress: 70 },
-  { name: "Node.js", progress: 60 },
-  { name: "Python", progress: 45 },
-  { name: "Data Science", progress: 30 },
-];
+import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
+import { useClerk } from "@clerk/clerk-react";
 
 const Analytics = () => {
+  const { signOut } = useClerk();
+  const navigate = useNavigate();
   const [timeRange, setTimeRange] = useState("6months");
+
+  
+  const handleLogout = async () => {
+    await signOut();  
+    navigate("/");    
+  };
+
+  // Sample data for charts
+  const learningProgressData = [
+    { month: "Jan", hours: 12, sessions: 5, skills: 2 },
+    { month: "Feb", hours: 15, sessions: 7, skills: 2 },
+    { month: "Mar", hours: 18, sessions: 8, skills: 3 },
+    { month: "Apr", hours: 16, sessions: 7, skills: 3 },
+    { month: "May", hours: 22, sessions: 10, skills: 4 },
+    { month: "Jun", hours: 28, sessions: 12, skills: 5 },
+  ];
+
+  const skillProgressData = [
+    { name: "JavaScript", progress: 85 },
+    { name: "React", progress: 70 },
+    { name: "Node.js", progress: 60 },
+    { name: "Python", progress: 45 },
+    { name: "Data Science", progress: 30 },
+  ];
 
   return (
     <div className="flex h-screen overflow-hidden">
@@ -40,6 +50,7 @@ const Analytics = () => {
               <h1 className="text-2xl font-bold">Analytics Dashboard</h1>
               <p className="text-muted-foreground">Track your learning progress and growth</p>
             </div>
+            
             <div className="mt-4 md:mt-0">
               <Select value={timeRange} onValueChange={setTimeRange}>
                 <SelectTrigger className="w-[180px]">
@@ -53,6 +64,10 @@ const Analytics = () => {
                 </SelectContent>
               </Select>
             </div>
+
+            <Button className="bg-eduwealth-primary hover:bg-eduwealth-primary/90" onClick={handleLogout}>
+              Logout
+            </Button>
           </div>
           
           {/* Stats Overview */}
