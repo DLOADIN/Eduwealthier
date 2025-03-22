@@ -12,6 +12,7 @@ import Mentors from "./pages/Mentors";
 import NotFound from "./pages/NotFound";
 import Analytics from "./pages/Analytics";
 import MentorVideos from "./pages/MentorVideos";
+import Settings from "./pages/Settings";
 
 const queryClient = new QueryClient();
 
@@ -64,6 +65,7 @@ const App = () => (
           <Route path="/signup" element={<CustomSignUp />} />
           <Route path="/analytics" element={<Analytics />} />
           <Route path="/mentor-videos" element={<MentorVideos />} />
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
