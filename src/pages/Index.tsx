@@ -26,6 +26,9 @@ const Index = () => {
     { name: "Paul Kagame", image: image7, description: "Explore leadership lessons from Rwanda's President, Paul Kagame." },
     { name: "Denis Villeneuve", image: image8, description: "Learn filmmaking from one of the world's leading directors." },
   ];
+
+  const date = new Date();
+  const newdate = date.getFullYear();
   
   const faqs = [
     {
@@ -347,7 +350,7 @@ const Index = () => {
           </div>
           <div className="border-t border-gray-200 mt-12 pt-6">
             <p className="text-xs text-gray-500 text-center">
-              © 2025 Eduwealth. All rights reserved.
+              © {newdate} Eduwealth. All rights reserved.
             </p>
           </div>
         </div>

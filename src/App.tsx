@@ -1,10 +1,10 @@
 import { useEffect } from "react";
-import { BrowserRouter, Routes, Route, useNavigate, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
-import { SignIn, SignUp, useAuth, useClerk } from "@clerk/clerk-react";
+import { SignIn, SignUp, useAuth } from "@clerk/clerk-react";
 
 import Index from "./pages/Index";
 import Dashboard from "./pages/Dashboard";
@@ -12,11 +12,9 @@ import Mentors from "./pages/Mentors";
 import NotFound from "./pages/NotFound";
 import Analytics from "./pages/Analytics";
 import MentorVideos from "./pages/MentorVideos";
-import { Button } from "@/components/ui/button"; 
 
 const queryClient = new QueryClient();
 
-// ✅ Custom SignIn Component
 const CustomSignIn = () => {
   const navigate = useNavigate();
   const { isSignedIn } = useAuth();
@@ -28,8 +26,10 @@ const CustomSignIn = () => {
   }, [isSignedIn, navigate]);
 
   return (
-    <div className="font-intel">
-      <SignIn appearance={{ layout: { socialButtonsPlacement: "bottom" } }} />
+    <div className="flex items-center justify-center min-h-screen">
+      <div className="w-full max-w-md p-6 rounded-lg">
+        <SignIn appearance={{ layout: { socialButtonsPlacement: "bottom" } }} />
+      </div>
     </div>
   );
 };
@@ -45,30 +45,13 @@ const CustomSignUp = () => {
   }, [isSignedIn, navigate]);
 
   return (
-    <div className="font-intel">
-      <SignUp />
+    <div className="flex items-center justify-center min-h-screen">
+      <div className="w-full max-w-md p-6 rounded-lg">
+        <SignUp />
+      </div>
     </div>
   );
 };
-
-// ✅ Custom Logout Component
-// const Logout = () => {
-//   const { signOut } = useClerk();
-//   const navigate = useNavigate();
-
-//   const handleLogout = async () => {
-//     await signOut(); // ✅ Sign out of Clerk
-//     navigate("/");   // ✅ Redirect to home page
-//   };
-
-//   return (
-//     <Link to="/" onClick={handleLogout}>
-//       <Button className="bg-eduwealth-primary hover:bg-eduwealth-primary/90">
-//         Logout
-//       </Button>
-//     </Link>
-//   );
-// };
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
