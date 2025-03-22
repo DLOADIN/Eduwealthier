@@ -1,3 +1,4 @@
+
 import { useEffect } from "react";
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -12,6 +13,7 @@ import Mentors from "./pages/Mentors";
 import NotFound from "./pages/NotFound";
 import Analytics from "./pages/Analytics";
 import MentorVideos from "./pages/MentorVideos";
+import Accomplishments from "./pages/Accomplishments";
 import Settings from "./pages/Settings";
 
 const queryClient = new QueryClient();
@@ -65,6 +67,7 @@ const App = () => (
           <Route path="/signup" element={<CustomSignUp />} />
           <Route path="/analytics" element={<Analytics />} />
           <Route path="/mentor-videos" element={<MentorVideos />} />
+          <Route path="/accomplishments" element={<Accomplishments />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
