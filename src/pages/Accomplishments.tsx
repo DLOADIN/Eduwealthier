@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Trophy, Award, Star, Certificate, CheckCircle2 } from "lucide-react";
+import { Trophy, Award, Star, CheckCircle2, Bookmark } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import SidebarAdapter from "@/components/layout/SidebarAdapter";
 
@@ -32,7 +32,7 @@ const achievements: Achievement[] = [
     title: "Research Publication",
     date: "September 2023",
     description: "Published paper on machine learning applications in healthcare",
-    icon: <Certificate className="h-8 w-8 text-green-500" />,
+    icon: <Bookmark className="h-8 w-8 text-green-500" />,
   },
   {
     id: 4,
