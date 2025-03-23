@@ -41,7 +41,7 @@ const navItems: NavItem[] = [
  
   {
     title: "Accomplishments",
-    href: "/accomplishments",
+    href: "/Accomplishments",
     icon: Trophy,
   },
   // {

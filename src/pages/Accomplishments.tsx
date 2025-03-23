@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Trophy, Award, Star, CheckCircle2, Bookmark } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
