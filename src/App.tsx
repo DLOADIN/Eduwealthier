@@ -46,7 +46,7 @@ const CustomSignUp = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen">
-      <div className="w-full max-w-md p-6 rounded-lg">
+      <div className="w-full max-w-md p-7 rounded-lg">
         <SignUp />
       </div>
     </div>
