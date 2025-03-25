@@ -12,6 +12,7 @@ import Mentors from "./pages/Mentors";
 import NotFound from "./pages/NotFound";
 import Analytics from "./pages/Analytics";
 import MentorVideos from "./pages/MentorVideos";
+import Accomplishments from "./pages/Accomplishments";
 
 const queryClient = new QueryClient();
 
@@ -67,6 +68,7 @@ const App = () => (
           <Route path="/signup" element={<CustomSignUp />} />
           <Route path="/analytics" element={<Analytics />} />
           <Route path="/mentor-videos" element={<MentorVideos />} />
+          <Route path="/Accomplishments" element={<Accomplishments/>}/>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
