@@ -1,0 +1,10 @@
+# Please install these python libraries 
+
+flask
+mysql.connector
+plotly
+flask
+twilio
+python-dotenv
+flask-cors
+flask_sqlalchemy
