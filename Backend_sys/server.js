@@ -59,11 +59,6 @@ app.post('/api/book-session', async (req, res) => {
       return res.status(400).json({ error: 'Mentor and mentee IDs are required' });
     }
 
-    // Check if mentor and mentee are the same
-    if (mentor_id === mentee_id) {
-      return res.status(400).json({ error: 'Mentor and mentee cannot be the same' });
-    }
-
     // Check for valid UUID format
     const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-5][0-9a-f]{3}-[089ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
     if (!uuidRegex.test(mentor_id) || !uuidRegex.test(mentee_id)) {
@@ -178,55 +173,6 @@ app.post('/api/messages', async (req, res) => {
   }
 });
 
-// Enhanced Send Message Endpoint
-app.post('/api/messages', async (req, res) => {
-  try {
-    const { sender_id, recipient_id, content } = req.body;
-    
-    // Validate input
-    if (!sender_id || !recipient_id || !content) {
-      return res.status(400).json({ error: 'Sender, recipient, and content are required' });
-    }
-
-    const { data: senderCheck, error: senderError } = await supabase
-      .from('profiles')
-      .select('id')
-      .eq('id', sender_id)
-      .single();
-
-    const { data: recipientCheck, error: recipientError } = await supabase
-      .from('profiles')
-      .select('id')
-      .eq('id', recipient_id)
-      .single();
-
-    if (senderError || recipientError) {
-      return res.status(404).json({ error: 'Sender or recipient not found' });
-    }
-
-    // Insert message
-    const { data, error } = await supabase
-      .from('messages')
-      .insert([{
-        sender_id,
-        recipient_id,
-        content,
-        is_read: false
-      }])
-      .select(`
-        *,
-        sender:profiles!messages_sender_id_fkey (name, avatar_url),
-        recipient:profiles!messages_recipient_id_fkey (name, avatar_url)
-      `);
-
-    if (error) throw error;
-
-    res.status(201).json(data[0]);
-  } catch (error) {
-    console.error('Error sending message:', error);
-    res.status(500).json({ error: error.message });
-  }
-});
 
 // Catch-all for undefined routes
 app.use((req, res) => {

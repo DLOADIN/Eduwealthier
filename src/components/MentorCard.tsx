@@ -8,6 +8,7 @@ import { useToast } from '@/components/ui/use-toast';
 import { Label } from '@/components/ui/label';
 import { useUser } from '@clerk/clerk-react'; 
 import { Mentor } from '@/types/mentor';
+import supabase from '@/supabaseserver'; 
 
 type MentorCardProps = {
   mentor: Mentor;
@@ -26,6 +27,7 @@ const MentorCard: React.FC<MentorCardProps> = ({ mentor, onBack }) => {
     duration: 60,
   });
   const [message, setMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Null checks and error handling
   if (!mentor) {
@@ -38,6 +40,9 @@ const MentorCard: React.FC<MentorCardProps> = ({ mentor, onBack }) => {
 
   const handleBookSession = async () => {
     try {
+      // Set loading state
+      setIsSubmitting(true);
+      
       // Validate booking data
       if (!bookingData.date) {
         toast({
@@ -45,25 +50,29 @@ const MentorCard: React.FC<MentorCardProps> = ({ mentor, onBack }) => {
           description: 'Please select a date for the session',
           variant: 'destructive',
         });
+        setIsSubmitting(false);
         return;
       }
 
-      // Replace with actual API call
-      const response = await fetch('http://localhost:5000/api/book-session', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          mentor_id: mentor.id,
-          mentee_id: user.id,
-          title: bookingData.title || `Session with ${mentor.name}`,
-          description: bookingData.description,
-          session_date: bookingData.date,
-          duration: bookingData.duration,
-          price: mentor.hourlyRate * (bookingData.duration / 60),
-        }),
-      });
+      // Prepare session data
+      const sessionData = {
+        mentor_id: mentor.id,
+        mentee_id: user.id,
+        title: bookingData.title || `Session with ${mentor.name}`,
+        description: bookingData.description,
+        session_date: new Date(bookingData.date).toISOString(),
+        duration: bookingData.duration,
+        price: mentor.hourlyRate * (bookingData.duration / 60),
+        status: 'scheduled',
+      };
 
-      if (!response.ok) throw new Error('Booking failed');
+      // Insert data directly into Supabase
+      const { data, error } = await supabase
+        .from('sessions')
+        .insert([sessionData])
+        .select();
+
+      if (error) throw error;
       
       toast({
         title: 'Session booked!',
@@ -71,48 +80,47 @@ const MentorCard: React.FC<MentorCardProps> = ({ mentor, onBack }) => {
       });
       setShowBookingForm(false);
     } catch (error) {
+      console.error('Booking error:', error);
       toast({
         title: 'Error',
         description: error instanceof Error ? error.message : 'An unknown error occurred',
         variant: 'destructive',
       });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   const handleSendMessage = async () => {
     try {
+      // Set loading state
+      setIsSubmitting(true);
+      
       if (!message.trim()) {
         toast({
           title: 'Error',
           description: 'Message cannot be empty',
           variant: 'destructive',
         });
+        setIsSubmitting(false);
         return;
       }
   
-      console.log('Sending message:', { // Add this
+      // Prepare message data
+      const messageData = {
         sender_id: user.id,
         recipient_id: mentor.id,
-        content: message
-      });
+        content: message,
+        is_read: false
+      };
   
-      const response = await fetch('http://localhost:5000/api/messages', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          sender_id: user.id,
-          recipient_id: mentor.id,
-          content: message,
-        }),
-      });
+      // Insert message directly into Supabase
+      const { data, error } = await supabase
+        .from('messages')
+        .insert([messageData])
+        .select();
   
-      const responseData = await response.json(); // Add this to see server response
-      console.log('Server response:', responseData);
-  
-      if (!response.ok) {
-        console.error('Failed response:', response); // More detailed error
-        throw new Error(responseData.error || 'Message failed');
-      }
+      if (error) throw error;
       
       toast({
         title: 'Message sent!',
@@ -121,15 +129,16 @@ const MentorCard: React.FC<MentorCardProps> = ({ mentor, onBack }) => {
       setShowMessageForm(false);
       setMessage('');
     } catch (error) {
-      console.error('Message send error:', error); // Detailed error logging
+      console.error('Message send error:', error);
       toast({
         title: 'Error',
         description: error instanceof Error ? error.message : 'An unknown error occurred',
         variant: 'destructive',
       });
+    } finally {
+      setIsSubmitting(false);
     }
   };
-
 
   return (
     <div className="container mx-auto p-4">
@@ -272,10 +281,19 @@ const MentorCard: React.FC<MentorCardProps> = ({ mentor, onBack }) => {
             </div>
           </div>
           <div className="flex justify-end gap-2">
-            <Button variant="outline" onClick={() => setShowBookingForm(false)}>
+            <Button 
+              variant="outline" 
+              onClick={() => setShowBookingForm(false)}
+              disabled={isSubmitting}
+            >
               Cancel
             </Button>
-            <Button onClick={handleBookSession}>Confirm Booking</Button>
+            <Button 
+              onClick={handleBookSession} 
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? 'Processing...' : 'Confirm Booking'}
+            </Button>
           </div>
         </DialogContent>
       </Dialog>
@@ -295,11 +313,18 @@ const MentorCard: React.FC<MentorCardProps> = ({ mentor, onBack }) => {
             />
           </div>
           <div className="flex justify-end gap-2">
-            <Button variant="outline" onClick={() => setShowMessageForm(false)}>
+            <Button 
+              variant="outline" 
+              onClick={() => setShowMessageForm(false)}
+              disabled={isSubmitting}
+            >
               Cancel
             </Button>
-            <Button onClick={handleSendMessage} disabled={!message.trim()}>
-              Send Message
+            <Button 
+              onClick={handleSendMessage} 
+              disabled={!message.trim() || isSubmitting}
+            >
+              {isSubmitting ? 'Sending...' : 'Send Message'}
             </Button>
           </div>
         </DialogContent>
@@ -308,4 +333,5 @@ const MentorCard: React.FC<MentorCardProps> = ({ mentor, onBack }) => {
   </div>
   );
 };
+
 export default MentorCard;
