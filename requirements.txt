@@ -1,0 +1,9 @@
+#These are the packages you need to install to run the app's backend
+
+flask
+flask-cors
+python-dotenv
+pyjwt
+supabase
+python-dateutil
+pydantic
