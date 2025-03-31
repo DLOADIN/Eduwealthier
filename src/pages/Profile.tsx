@@ -137,9 +137,9 @@ const Profile = () => {
                   </div>
                 </CardContent>
                 <CardFooter>
-                  <Button onClick={handleUpdateProfile} disabled={isLoading}>
+                  {/* <Button onClick={handleUpdateProfile} disabled={isLoading}>
                     {isLoading ? "Updating..." : "Save changes"}
-                  </Button>
+                  </Button> */}
                 </CardFooter>
               </Card>
               
