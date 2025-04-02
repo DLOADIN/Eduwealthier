@@ -12,20 +12,20 @@ import Sidebar from "@/components/layout/Sidebar";
 import { Link, useNavigate } from "react-router-dom";
 import { useClerk } from "@clerk/clerk-react";
 
-// Video import strategy - add more videos as needed
-import videoone from "../videos/videoone.mp4";
-import videotwo from "../videos/videotwo.mp4";
-import videothree from "../videos/videothree.mp4";
-import videofour from "../videos/videofour.mp4";
-import videofive from "../videos/videofive.mp4";
-import videosix from "../videos/videosix.mp4";
-import videoseven from "../videos/videoseven.mp4";
-import videoeight from "../videos/videoeight.mp4";
-import videonine from "../videos/videonine.mp4";
-import videoten from "../videos/videoten.mp4";
-import videoeleven from "../videos/videoeleven.mp4";
-import videotwelve from "../videos/videotwelve.mp4";
-import videothirteen from "../videos/videothirteen.mp4";
+// // Video import strategy - add more videos as needed
+// import videoone from "@/public/videos/videoone.mp4";
+// import videotwo from "@/public/videos/videotwo.mp4";
+// import videothree from "@/public/videos/videothree.mp4";
+// import videofour from "@/public/videos/videofour.mp4";
+// import videofive from "@/public/videos/videofive.mp4";
+// import videosix from "@/public/videos/videosix.mp4";
+// import videoseven from "@/public/videos/videoseven.mp4";
+// import videoeight from "@/public/videos/videoeight.mp4";
+// import videonine from "@/public/videos/videonine.mp4";
+// import videoten from "@/public/videos/videoten.mp4";
+// import videoeleven from "@/public/videos/videoeleven.mp4";
+// import videotwelve from "@/public/videos/videotwelve.mp4";
+// import videothirteen from "@/public/videos/videothirteen.mp4";
 
 //business pictures
 import businessone from '../frontend/thumbnails/businessone.jpg'
@@ -151,7 +151,21 @@ const MentorVideos = () => {
   const [sortOption, setSortOption] = useState("newest");
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
   const { signOut } = useClerk();
-  const navigate = useNavigate();
+  const navigate = useNavigate(); 
+  const videoone = "/videos/videoone.mp4";
+  const videotwo = "/videos/videotwo.mp4";
+  const videothree = "/videos/videothree.mp4";
+  const videofour = "/videos/videofour.mp4";
+  const videofive = "/videos/videofive.mp4";
+  const videosix = "/videos/videosix.mp4";
+  const videoseven = "/videos/videoseven.mp4";
+  const videoeight = "/videos/videoeight.mp4";
+  const videonine = "/videos/videonine.mp4";
+  const videoten = "/videos/videoten.mp4";
+  const videoeleven = "/videos/videoeleven.mp4";
+  const videotwelve = "/videos/videotwelve.mp4";
+  const videothirteen = "/videos/videothirteen.mp4";
+
 
   // Updated video data with local imports
   const sampleVideos: VideoCardProps[] = [
