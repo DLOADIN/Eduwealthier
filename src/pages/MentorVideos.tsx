@@ -152,26 +152,26 @@ const MentorVideos = () => {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
   const { signOut } = useClerk();
   const navigate = useNavigate(); 
-  const videoone = "https://www.youtube.com/watch?v=aTJoT6MmboI";
-  const videotwo = "/videos/videotwo.mp4";
-  const videothree = "/videos/videothree.mp4";
-  const videofour = "/videos/videofour.mp4";
-  const videofive = "/videos/videofive.mp4";
-  const videosix = "/videos/videosix.mp4";
-  const videoseven = "/videos/videoseven.mp4";
-  const videoeight = "/videos/videoeight.mp4";
-  const videonine = "/videos/videonine.mp4";
-  const videoten = "/videos/videoten.mp4";
-  const videoeleven = "/videos/videoeleven.mp4";
-  const videotwelve = "/videos/videotwelve.mp4";
-  const videothirteen = "/videos/videothirteen.mp4";
+  const videoone = "https://www.youtube.com/watch?v=SrJOE2pEp7A&pp=ygU1R2V0IHRvIExlYXJuIHRoZSBCZXN0IEZpbG1tYWtpbmcgVG9vbCwgRGF2aW5jaSBSZXNvbHbSBwkJvwCDtaTen9Q%3D";
+  const videotwo = "https://www.youtube.com/watch?v=YYPAFqQgbqE&pp=ygUUYSBjb3Vyc2Ugb24gbW9uYXJjaHk%3D";
+  const videothree = "https://www.youtube.com/watch?v=E4CI2vk3ugk&pp=ygUlQ29uc2VydmF0aXNtJ3MgUm9vdHMgaW4gaHVtYW4gc29jaWV0edIHCQm_AIO1pN6f1A%3D%3D";
+  const videofour = "https://www.youtube.com/watch?v=MYlgj1hwcYw&pp=ygUsSG93IHRvIHNldHVwIHlvdXIgZW52aXJvbm1lbnQgZm9yIGZpbG1tYWtpbmc%3D";
+  const videofive = "https://www.youtube.com/watch?v=EJHPltmAULA&pp=ygUUbGVhcm4gZmluYW5jZSBiYXNpY3M%3D";
+  const videosix = "https://www.youtube.com/watch?v=zOjov-2OZ0E&t=97s&pp=ygUZcHJvZ3JhbW1pbmcgZm9yIGJlZ2lubmVycw%3D%3D";
+  const videoseven = "https://www.youtube.com/watch?v=K5KVEU3aaeQ&pp=ygUUcHl0aG9uIGZvciBiZWdpbm5lcnM%3D";
+  const videoeight = "https://www.youtube.com/watch?v=NEzqHbtGa9U&pp=ygUObmlzY2hhIGZpbmFuY2U%3D";
+  const videonine = "https://www.youtube.com/watch?v=p5jiSsGa0bw&pp=ygUVY29kaW5nIHZzIHByb2dyYW1taW5n0gcJCb8Ag7Wk3p_U";
+  const videoten = "https://www.youtube.com/watch?v=Ay4fmZdZqJE&pp=ygUnV2lsbCB5b3VyIGludmVzdG1lbnRzIGJlIHdvcnRoIHRoZSB3YWl0";
+  const videoeleven = "https://www.youtube.com/watch?v=Nz5zQt5QO3Y&pp=ygUeZmlsbW1ha2luZyBjb3Vyc2UgZm9yIGFkdmFuY2Vk";
+  const videotwelve = "https://www.youtube.com/watch?v=bPt4AkXP6J0&pp=ygUiRmluYW5jZSB8IFRoZSBEcml2ZXIgb2YgQ2FwaXRhbGlzbQ%3D%3D";
+  const videothirteen = "https://www.youtube.com/watch?v=BDqvzFY72mg&pp=ygUdcG9saXRpY2FsIHNjaWVuY2UgZnVsbCBjb3Vyc2U%3D";
 
 
   // Updated video data with local imports
   const sampleVideos: VideoCardProps[] = [
     {
       id: "1",
-      title: "Get to Learn the Best Filmmaking Tool, Davinci Resolve",
+      title: "DaVinci Resolve Beginners Tutorial 2025: Edit like a PRO for FREE!",
       mentorName: "Denis Villenueve, Filmmaker",
       duration: "45:30",
       date: "2 weeks ago",
@@ -184,7 +184,7 @@ const MentorVideos = () => {
     },
     {
       id: "2",
-      title: "The concept of a Monarchy in Advanced Politics",
+      title: "Absolute Monarchy: Crash Course European History ",
       mentorName: "Michael Chen, Monarchy & Empire Historian",
       duration: "1:12:45",
       thumbnailUrl: politicalsciencesthree,
@@ -197,7 +197,7 @@ const MentorVideos = () => {
     },
     {
       id: "3",
-      title: "Conservatism's Roots in human society",
+      title: "Endnote 3: The Origins of Conservatism",
       mentorName: "Dr. Lisa Wang, US Politics Expert",
       duration: "58:20",
       date: "1 month ago",
@@ -210,7 +210,7 @@ const MentorVideos = () => {
     },
     {
       id: "4",
-      title: "How to setup your environment for filmmaking",
+      title: "7 Rules of Cinematic Framing and Composition",
       mentorName: "Christopher Nolan, Filmmaker",
       duration: "37:15",
       thumbnailUrl: filmtwo,
@@ -261,8 +261,8 @@ const MentorVideos = () => {
     },
     {
       id: "8",
-      title: "Let's talk about Money & What is Money",
-      mentorName: "Dr. Emily Patel & Jaden Camille, Goldman Sachs Analysts",
+      title: "How To Manage Your Money Like The 1%",
+      mentorName: "Nischa Khan, Financial Analyst",
       duration: "52:40",
       date: "3 weeks ago",
       thumbnailUrl: businessone,
@@ -287,7 +287,7 @@ const MentorVideos = () => {
     },
     {
       id: "10",
-      title: "Will your investments be worth the wait ",
+      title: "How to Invest For Beginners in 2025",
       mentorName: "Alux Kent, Business Professor",
       duration: "52:40",
       thumbnailUrl: businessthree,
@@ -300,7 +300,7 @@ const MentorVideos = () => {
     },
     {
       id: "11",
-      title: "Advanced Techniques in Davinci Resolve | Filmmaking",
+      title: "Filmmaking 101: Training for Scriptwriting, Camera, Shooting, Lighting and Video Post Production",
       mentorName: "Kwako Samuel, Davinci Resolve Expert",
       duration: "52:40",
       thumbnailUrl: filmthree,
@@ -313,7 +313,7 @@ const MentorVideos = () => {
     },
     {
       id: "12",
-      title: "Finance | The Driver of Capitalism",
+      title: "Capitalism EXPLAINED - How Capitalism Works ?",
       mentorName: "CEO Stephen A. Schwarzman, Blackstone Inc",
       duration: "52:40",
       date: "3 weeks ago",
@@ -326,7 +326,7 @@ const MentorVideos = () => {
     },
     {
       id: "13",
-      title: "What is Political Science",
+      title: "Introduction to Political Science: The Study of Politics",
       mentorName: "Thaddeus Young, Political Scientist",
       duration: "52:40",
       thumbnailUrl: politicalsciencesone,
