@@ -27,3 +27,4 @@ dist-ssr
 #Backend
 /Backend_sys/.env
 /.env.local
+/.env
