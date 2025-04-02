@@ -443,32 +443,36 @@ const MentorVideos = () => {
           </div>
 
           {/* Video Player Modal */}
-          <Dialog open={!!selectedVideo} onOpenChange={() => setSelectedVideo(null)}>
-            <DialogContent className="max-w-4xl">
-              <DialogHeader>
-                <DialogTitle>Video Player</DialogTitle>
-                <Button 
-                  variant="ghost" 
-                  size="icon" 
-                  className="absolute right-4 top-4"
-                  onClick={() => setSelectedVideo(null)}
-                >
-                  <X className="h-4 w-4" />
-                </Button>
-              </DialogHeader>
-              {selectedVideo && (
-                <div className="aspect-video">
-                  <ReactPlayer 
-                    url={selectedVideo}
-                    width="100%"
-                    height="100%"
-                    controls
-                    playing
-                  />
-                </div>
-              )}
-            </DialogContent>
-          </Dialog>
+          {/* Video Player Modal */}
+<Dialog open={!!selectedVideo} onOpenChange={() => setSelectedVideo(null)}>
+  <DialogContent className="max-w-4xl">
+    <DialogHeader>
+      <DialogTitle>Video Player</DialogTitle>
+      <DialogDescription>
+        Watch the selected video content
+      </DialogDescription>
+      <Button 
+        variant="ghost" 
+        size="icon" 
+        className="absolute right-4 top-4"
+        onClick={() => setSelectedVideo(null)}
+      >
+        <X className="h-4 w-4" />
+      </Button>
+    </DialogHeader>
+    {selectedVideo && (
+      <div className="aspect-video">
+        <ReactPlayer 
+          url={selectedVideo}
+          width="100%"
+          height="100%"
+          controls
+          playing
+        />
+      </div>
+    )}
+  </DialogContent>
+</Dialog>
         </div>
       </main>
     </div>
