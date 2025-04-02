@@ -152,7 +152,7 @@ const MentorVideos = () => {
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
   const { signOut } = useClerk();
   const navigate = useNavigate(); 
-  const videoone = "/videos/videoone.mp4";
+  const videoone = "https://www.youtube.com/watch?v=aTJoT6MmboI";
   const videotwo = "/videos/videotwo.mp4";
   const videothree = "/videos/videothree.mp4";
   const videofour = "/videos/videofour.mp4";
